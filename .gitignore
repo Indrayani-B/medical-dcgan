@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual environment
+dcgan_proj/
+venv/
+
+# Data
+data/
+
+# Artifacts
+artifacts/
+
+# Logs
+logs/
+
+# Models
+*.pth
+*.pt
+
+# DVC cache
+.dvc/cache
+
+# OS
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+.lh
+
+test.ipynb
