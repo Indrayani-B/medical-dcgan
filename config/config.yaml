@@ -6,3 +6,12 @@ data_ingestion:
   source_dir: data/chest_xray
   local_data_file: artifacts/data_ingestion/data.zip
   unzip_dir: artifacts/data_ingestion/chest_xray
+
+data_preprocessing:
+  root_dir: artifacts/data_preprocessing
+  data_path: artifacts/data_ingestion/chest_xray
+  image_size: 64
+  batch_size: 64
+  num_workers: 4
+  pin_memory: true
+

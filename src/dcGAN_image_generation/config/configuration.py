@@ -1,6 +1,6 @@
 from dcGAN_image_generation.constants import *
 from dcGAN_image_generation.utils.common import read_yaml, create_directories
-from dcGAN_image_generation.entity.config_entity import DataIngestionConfig
+from dcGAN_image_generation.entity.config_entity import DataIngestionConfig, DataPreprocessingConfig
 
 
 class ConfigurationManager:
@@ -34,3 +34,20 @@ class ConfigurationManager:
         )
 
         return data_ingestion_config
+    
+    def get_data_preprocessing_config(self) -> DataPreprocessingConfig:
+
+        config = self.config.data_preprocessing
+    
+        create_directories([config.root_dir])
+    
+        data_preprocessing_config = DataPreprocessingConfig(
+            root_dir=Path(config.root_dir),
+            data_path=Path(config.data_path),
+            image_size=config.image_size,
+            batch_size=config.batch_size,
+            num_workers=config.num_workers,
+            pin_memory=config.pin_memory
+        )
+    
+        return data_preprocessing_config    
