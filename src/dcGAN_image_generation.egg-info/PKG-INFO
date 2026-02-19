@@ -1,0 +1,18 @@
+Metadata-Version: 2.4
+Name: dcGAN_image_generation
+Version: 0.0.0
+Summary: A small python package for DCGAN based medical image generation
+Home-page: https://github.com/Indrayani-B/medical-dcgan
+Author: Indrayani-B
+Author-email: indrayanibhujade378@gmail.com
+Project-URL: Bug Tracker, https://github.com/Indrayani-B/medical-dcgan/issues
+Dynamic: author
+Dynamic: author-email
+Dynamic: description
+Dynamic: home-page
+Dynamic: project-url
+Dynamic: summary
+
+# Medical DCGAN
+
+DCGAN for medical image generation using PyTorch.
