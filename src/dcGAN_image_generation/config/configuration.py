@@ -1,6 +1,6 @@
 from dcGAN_image_generation.constants import *
 from dcGAN_image_generation.utils.common import read_yaml, create_directories
-from dcGAN_image_generation.entity.config_entity import DataIngestionConfig, DataPreprocessingConfig
+from dcGAN_image_generation.entity.config_entity import DataIngestionConfig, DataPreprocessingConfig, ModelTrainingConfig
 
 
 class ConfigurationManager:
@@ -51,3 +51,50 @@ class ConfigurationManager:
         )
     
         return data_preprocessing_config    
+    
+    def get_model_training_config(self) -> ModelTrainingConfig:
+    
+        config = self.config.model_training
+        params = self.params.model_training
+        preprocessing_config = self.config.data_preprocessing
+    
+        create_directories([
+            config.root_dir,
+            config.trained_model_dir,
+            config.generated_images_dir
+        ])
+        
+        return ModelTrainingConfig(
+            root_dir=ROOT_DIR / config.root_dir,
+            data_path=ROOT_DIR / preprocessing_config.data_path,
+    
+            trained_model_dir=ROOT_DIR / config.trained_model_dir,
+            generated_images_dir=ROOT_DIR / config.generated_images_dir,
+    
+            z_dim=params.z_dim,
+            generator_feature_maps=params.generator_feature_maps,
+            discriminator_feature_maps=params.discriminator_feature_maps,
+    
+            num_epochs=params.num_epochs,
+            learning_rate=params.learning_rate,
+            beta1=params.beta1,
+            save_image_interval=params.save_image_interval,
+            image_size=preprocessing_config.image_size,
+
+            batch_size=preprocessing_config.batch_size,
+            
+            mlflow_uri=config.mlflow_uri,
+
+            all_params={
+                "z_dim": params.z_dim,
+                "gen_feature_maps": params.generator_feature_maps,
+                "disc_feature_maps": params.discriminator_feature_maps,
+                "learning_rate": params.learning_rate,
+                "beta1": params.beta1,
+                "epochs": params.num_epochs,
+                "batch_size": preprocessing_config.batch_size,
+                "image_size": preprocessing_config.image_size
+            }
+        )
+
+    

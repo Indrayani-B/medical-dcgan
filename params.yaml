@@ -1,1 +1,8 @@
-key : value
+model_training:
+  z_dim: 100
+  generator_feature_maps: 64
+  discriminator_feature_maps: 64
+  num_epochs: 50
+  learning_rate: 0.0002
+  beta1: 0.5
+  save_image_interval: 80
